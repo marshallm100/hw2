@@ -25,8 +25,6 @@
 # - Generate the models and migration files to match the domain model from hw1.
 #   Table and columns should match the domain model. Execute the migration
 #   files to create the tables in the database. (5 points)
-
-#START HERE
 # - Insert the "Batman" sample data using ruby code. Do not use hard-coded ids.
 #   Delete any existing data beforehand so that each run of this script does not
 #   create duplicate data. (5 points)
@@ -278,3 +276,9 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+# Batman Begins          Christian Bale        Bruce Wayne
+roles = Role.all
+for role in roles
+    puts "#{Movie.find_by({"id" => role["movie_id"]})["title"]}" + "    " + "#{Actor.find_by({"id" => role["actor_id"]})["name"]}"+ "    " + role["character_name"]
+end
